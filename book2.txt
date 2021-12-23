@@ -1,8 +1,343 @@
-page title
-keyword1, keyword2
+6 process review
+Data Collection, Reconnaissance, Data Analysis, Mapping,
 
-1 title2
-abc,def
+7 mapping: infrastructures
+Infrastructure mapping, sttack surface, Network Penetration Testing, port scanner, enumerate host, target organization, ephemeral service
 
-2 title2
-ghi, jkl
+8 mapping workflow
+mapping workflow, Infrastructure mapping, Service / Container Mapping, Subdomain Enumeration, URL / Resource mapping, Method Enumeration,
+
+9 mapping the total infrastructure
+human access, programmatic access,
+
+10 tips for infrastructure mapping 1
+Network Subnets, Virtual Machines, Private / Public IP addresses, Ports/ Port Restriction
+
+11 tips: mapping in aws and azure
+aws command, az command,
+
+12 tips for infrastructure mapping 2
+Bucket ACL Policy, user-level restrictions, bucket-level restrictions, Incident Response / Breach Notification scenario
+# https://buckets.grayhatwarfare.com/
+
+14 authentications and key material
+Authentication, $HOME/.aws/credentials,
+Key format, $HOME/.azure/accessTokens.json
+aws cli, Azure CLI
+# https://github.com/awslabs/git-secrets/blob/master/git-sercrets/
+
+15 searching for key material
+where keys stored,
+
+16 files / secrets format
+keys
+
+18 subset of useful strings to search for
+keys,
+
+19 .env example
+.env,
+
+23 aws sdk
+aws sdk,
+
+24 aws cli options
+aws cli options,
+
+25 working with aws services
+aws cli, Google Compute Engine SDK,
+
+26 handling output
+aws cli, --output [json|text|table]
+
+27 parsing json output in cli
+jq,
+# https://stedolan.github.io/jq
+# https://stedolan.github.io/jq/tutorial
+
+28 combining jq and aws
+aws cli, jq,
+
+32 url primers
+URL, SEC542, SEC642,
+API layer, RESful APIs,
+
+33 attackers view of uris and RFC3986
+URI, scheme, authority, path, query, fragment,
+
+34 URIs URLs URNs
+URI, URL, URN,
+# https://curl.se/docs/manpage.html
+# https://tools.ietf.org/html/rfc8141
+
+35 amazon arn
+ARN,
+# https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+
+36 how cloud resources are referenced
+
+39 amazon IAM
+Amazon IAM, IAM, Versioning of Permission Policies, Permission Boundaries,
+Programmatic Access through API keys, Permission Groups, Federation,
+Roles Based Access Control, Attribute Based Access Control,
+
+40 amazon aws root account
+root account,
+
+41 IAM defaults
+IAM, Deny model, GovCloud, Beijing partitions, NoIpAddress,
+
+42 identity types on aws
+IAM, IAM Policies, Identity Policies, Resource Policies, IAM Permission Boundaries,
+Serivce Control Policies, Access Control List, Session Policy,
+
+43 IAM policy example
+IAM, IAM Policy Documents,
+
+44 AWS IAM visualized
+IAM,
+
+45 Identity V.S. Resource Policies
+IAM, Identity Policy, Resource Policies,
+
+46 Policy Boundaries
+IAM, Policy boundary,
+
+47 Policies for services
+IAM,
+
+48 Attribute-based Access Control
+IAM, Attribute Based Access Control, ABAC,
+
+50 Azure cli
+Azure CLI, JSONC, Colorized JSON,
+
+51 Azure login options
+Azure, Azure Resource Manager, Azure RM, RBAC, Service Principal, certificate-based authentication
+# https://portal.azure.com
+
+53 jmespath queries
+JMESPath Query,
+
+55 usrename harvesting in the cloud
+username harvesting, finding valid usernames, SAML, IdPs, ID Provides,
+
+56 CLoud landing page abuse
+username harvesting, cloud landing page abuse,
+
+60 looing for unauthenticated file shares
+share files, S3, gobuster, ?comp=list, CyberArk,
+
+61 Azure files
+Azure Files, File Storage, Global Storage Blob Storage, Microsoft SMB,
+SMBv3, Azure Active Directory Domain Services,
+Tables, Blobs, Queues, File Storage,
+# https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview
+
+62 identities with azure files and on-premise services
+Azure Files, Azure AD,
+
+66 introduction to microsoft cloud services
+Azure, Office365, multiple delivery vehicles,
+
+67 comparison of service names between each providers
+comparison, Microsoft Technology, Unix style,
+
+68 on premise, azure, and aws role comparisons
+on-premise, role, comparison, Access Control model, POSIX, Azure API,
+
+70 Microsoft Identity Services
+Microsoft Identity Services, IAM, Microsoft Active Directory,
+Microsoft Active Directory Domain Services,
+Microsoft Active Directory Federation Services,
+Azure Active Directory,
+Azure Active Directory Domain Services,
+
+71 high-level view of identity in microsoft
+Azure Active Directory, Kerberos, NTLMv2, OAuth, SAML, OAuthv2,
+Domain/Forest, Tenant/Subscription,
+Folder Structure, Flat Structure,
+Read/Write,
+
+72 microsoft traditional active directory
+Microsoft Active Directory Traditional, Domain Controller,
+
+73 microsoft active directory federation services
+Microsoft ADFS, Microsoft IdP, Federated Identity Service,
+
+74 Azure Active Directory
+Azure AD, OAuth2 IdP with SAML support
+
+75 Azure Active Directory Roles
+Azure AD, Classic Subscription Administrator Roles, Azure RBAC,
+Azure AD Administrator Roles,
+
+76 Azure Active Directory Domain Services
+Azure Active Directory Domain Services,
+
+77 attackers' view of identity services in azure
+In Scope,
+
+78 attackers' view of ad connector
+Azure AD Connector service, Password Hash Synchronization, Passthru Authentication,
+NTHash,
+Okta, SailPoint, Auth0,
+# https://docs.microsoft.com/en-us/azure/adctive-directory/hybrid/how-to-connect-password-hash-synchronization
+
+80 Azure AD RBAC Roles
+Azure AD RABC roles 70 over, Owner, Contributor, Reader, User Access Administrator,
+
+81 Azure AD Adminitrator Roles
+Domain Admin, Enterprise Admin,
+Global Administrator, User Administrator, Billing Administrator,
+
+82 Azure AD Scope
+Azure AD, Azure AD Permissions, Management Groups, Subscriptions, Resources Groups, Resources,
+
+83 Azure AD Roles Viewed
+Azure AD Roles
+# https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference#available-roles
+
+84 Azure RBAC v.s. Azure AD Admins v.s. Cross Platform Admins
+Azure RBAC, Azure AD Administrator Roles,
+
+85 Azure AD Priviledge Escalation
+Azure AD Priviledge Escalation,
+Access management for Azure resources,
+
+87 Why focus on authentication standards
+Authentication Standards, Automated Processes, Multi-Factor Authentication, Certificates and Non-password-based authentications
+
+88 Web Authentication Standards
+Web Authentication Standards, Basic Authentication,
+SAML-Based Authentcation and Identity,
+OAuth and OpenIDConnect, Bearer Authentication and API Authentication,
+Swagger, IANA, Mozilla,
+OASIS group,
+# https://swagger.io/docs/specification/authentication
+# https://swagger.io/docs/specification/authentication/bearer-authentication/
+# https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
+# https://developer.mozilla.org/en-US/docs/WebHTTP/Authentication
+
+89 Why OAuth
+OAuth, Mint.com, store username and password,
+
+90 OAuth and bearer authentication
+OAuthv1, OAuthv2, bearer, RFC5849, RFC6749,
+# https://medium.com/capgemini-norway/oauth2-authorization-patterns-and-microservices-45ffc67a8541
+
+91 OAuth terminology
+OAuth, Scope, Authorization Grant, Access Token,
+
+92 OAuthv2
+OAuthv2, Resource Owner, Client, Authorization Server, Resource Server,
+Content List, Location API,
+
+93 flow types
+OAuthv1, Authentication Code Grant (Code Flow),
+Implicit Flow,
+Resource Owner Password Credentials, Client Credentials, Revocation Flow,
+# https://www.authlete.com/ja/resources/videos/oauth2-flows/
+
+94 OAuthv2 Authorization code flow client-side
+OAuth, Authorization Code Flow, Client_id, Redirection_uri, Response_Type, Scope,
+
+95 OAuthv2 Authorization Code Flow Server-side
+temporary authentiation grant,
+
+96 OpenID Connect
+OpenID Connect (OIDC), ID Token, JWT, Userinfo Endpoint,
+Standardized Scopes, Standardized Authentidation Implementation
+
+97 OpenID Connect Flow and OAuth (1)
+OpenID Connect, Scope, Login_Hint, OpenId.Realm,
+
+98 OpenID Connect Flow and OAuth (2)
+OpenID Connect,
+
+99 json web tokens (jwt)
+JSON Web Tokens (JWT), RFC7519, tampering, integrity-checking signature,
+# https://jwt.io
+# https://jwt.ms
+
+100 attackers view of jwt
+JSON Web Tokens (JWT), Symmetric Shared Keys, Asymmetric Certificates,
+
+101 Bearer Authentications
+Bearer authentications,
+
+102 SAML
+Security Assertion Markup Language, SAML, OASIS group,
+
+103 Identifying SAML
+SAML, SOAP-like format, Authentidation Request,
+Assertion Query and Request,
+Artifact Resolution Protocol,
+Name Identifier Management Protocol, Single Logout Protocol,
+Name Identifier Mapping Protocol
+
+104 Example SAML Message
+AuthNRequest, Authentication Request Protocol,
+
+105 Attacker's view of SAML
+SAML, Identity Provider, Service Principal, CyberArk, Golden SAML Attack,
+
+107 Golden SAML
+Golden SAML Attack, CyberArk (Privileged Access management company),
+Kerberos Golden Ticket Attack,
+Token-Signing Private Key, IdP Public Certificate, IdP Name, Role Name,
+
+108 SAML and ADFS Flow
+tamperable,
+
+109 Shimit
+Shimit.py,
+# https://github.com/cyberark/shimit
+
+110 shimit example
+
+112 postman and apis
+postman, Interception Proxies, cURL,
+
+113 postman
+postman, Rest, Representational State Transfer,
+# https://getpostman.com
+
+114 postman limitations on the free build
+postman,
+
+115 postman ui
+postman, Single Page Application,
+
+116 postman feature - request window
+postman, requeest window,
+
+117 postman feature - history
+postman, history,
+
+118 postman feature - collections
+postman, collections, Microsoft Graph API
+
+119 postman feature - method options
+postman, method options,
+
+120 postman features - environments
+postman, environments,
+
+121 postman features - params, headers, body
+postman, params/headers/body,
+
+122 postman features - authorization
+postman, Authorization, Basic Auth, API Key, Bearer Token, AWS Signatures
+
+123 postman features - code
+postman, code,
+
+127 Appendix2: OAuth v1 and v2
+Consmer, Service Provider, User, Authorization Server,
+
+128 Appendix2: Ussues and considerations
+OAuth1,
+
+129 Appendix2: SAML Workflows
+SAML,

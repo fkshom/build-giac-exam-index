@@ -54,17 +54,25 @@ end
 indexfile = Indexfile.new
 indexfile << [1, 'book1.txt']
 indexfile << [2, 'book2.txt']
+indexfile << [3, 'book3.txt']
+indexfile << [4, 'book4.txt']
+indexfile << [5, 'book5.txt']
 entries = {}
 indexfile.each do |entry|
   entry[:keywords].each do |keyword|
     entries[keyword] ||= []
-    entries[keyword] << { book: entry[:book], page: entry[:page] }
+    entries[keyword] << { book: entry[:book], page: entry[:page], title: entry[:title] }
   end
 end
 
-entries.keys.sort.each do |keyword|
-  bookpages = entries[keyword].map do |bookpage|
-    "#{bookpage[:book]}-#{bookpage[:page]}"
+require 'csv'
+
+CSV.open("a.txt", "wb") do |csv|
+
+entries.keys.sort_by(&:downcase).each do |keyword|
+  bookpages = entries[keyword].map do |entry|
+    "#{entry[:book]}-#{entry[:page]} #{entry[:title]}"
   end
-  puts "#{keyword}    #{bookpages.join(', ')}"
+  csv << [keyword, bookpages.join("\n")]
+end
 end

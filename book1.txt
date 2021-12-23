@@ -1,10 +1,330 @@
-page title
-keyword1, keyword2
+17 Unique Properties of cloud computing
+Pets vs Cattle,
 
-1 title1
-abc,def
-#
+18 Cloud Computing Properties
+SP-500-291, Self-Service Capable, Broadly Accessible, Rapidly Elastic, Service measurability
 
-2 title1
-ghi, jkl
-#
+21 SANS Cloud Penetration testing methodology
+Reconnaissance, DataCollection,Data Analysis for Discovery, Scanning, Mapping, Vulnerability, Discovery,
+Exploitation, Elevation,Post Exploit Reconnaissance, Persistence, Pivot Pivoting, Lessons Learned, Remediation
+
+24 Types of clouds
+Software as a Service, Platform as a Service, Infrastructure as a Service
+
+25 Terms of Service and demarcation points
+Terms of Service, Rules of Engagement, Penetration Testing guidance
+
+26 Shared Responsibility and pen testing
+Shared responsibility model
+
+27 Attacking Software as a service
+Software as a Service,
+
+28 Attacking Platform as a service
+Platform as a Service, Container-based orchastration,
+
+29 The attacker's view of IaaS
+
+30 Testing policies of public cloud service providers - IAAS
+
+31 Access cloud service providers - Amazon
+EC2, NAT Gateway, Elastic Load Balancers, RDS, CloudFront, Aurora, API Gateway
+Lambda, Lambda Edge, LightSail, Elastic Beanstalk, S3, Guard Duty
+# https://aws.amazon.com/security/penetration-testing/
+
+32 AWS Restrictions
+AWS Restrictions, DNS Zone Working, Route 53, DoS, DDoS, Port Flooding,
+Protocol Flooding, Request Flooding, API Flooding attacks,
+1GB, 10000RPS,
+T3.nano, T2.nano, T1.micro, M1.small
+Performance-hogging attacks,
+Lambda
+# https://www.youtube.com/watch?v=QdzV04T_kec
+
+33 Azure Policies
+Azure Policies, Red team methodology, Mark Russinovich, Microsoft Architects, Sysinternals
+# https://docs.microsoft.com/en-us/azure/security/azuresecurity-pen-testing
+# https://www.microsoft.com/en-us/msrc/pentest-rules-ofengagement?rtc=1
+
+34 Azure teams of service - scope
+Azure Active Directroy, Microsoft Intune, Microsoft Azure,
+Microsoft Dynamics 365, Microsoft Account, Office365, Azure DevOps,
+
+35 Azure policies - rules and permissions
+Azure Policies, Filling out a notification, Serverless functions,
+Load, MDM, MAM, Security monitoring,
+Security Event management, Log managemet
+# https://portal.msrc.microsoft.com/en-us/engage/pentest
+
+36 Azure policies - restrictions
+Azure Policies, Moving beyond, proof of concept, xp_cmdshell,
+demarcation point,
+
+38 ngrok
+ngrok, netcat as a service, socat
+
+39 class labs - nats
+VPN connectivity, NAT
+
+40 ngrok options
+ngrok command, Paid Accounts
+# https://ngrok.com/docs
+
+41 how to use ngrok
+ngrok sample, python web server,
+
+45 Recon at cloud scale
+on-premise, sacrificing accuracy,
+
+46 Building an asset discovery pipeline
+asset collection pipeline, Virtual Host header, DNS record,
+
+47 How domains are leveraged
+Domains, CNAME, DNS, NS, MX PTR,
+
+48 Seed values: Domains
+Seed value, Domain name, congruent, Facebook, Instagram, WhatsApp, CDN, workplace.com,
+# https://www.workplace.com/resources/tech/itconfiguration/domain-whitelisting
+
+49 Domains and host discovery
+Domains, DNS, Passive Technique, Certificate Transparency Reports, Google Cache,
+active techniques, Brute forcing through wordlists, Shuffling wordlists through DNS engins
+
+50 Passive technique - Certificate Transparency
+Certificate Transparency, CT, CT Logs, TLS certificate,
+Merkle Hash Trees,
+
+51 Certificates: review
+Certificate, CT Logs, ACME Protocol, SAN, Subject Alternative Names,
+CommonName, FQDN, Automatic Certificate Management Environment Protocol
+
+52 ACME and Let's Encrypt
+ACME, Let's Encrypt, free Certificate Authority,
+Automated Certificate Management Environment,
+Certbot, SANs, Subject Alternative Names, 90-day, DNS Validation, HTTP Based Validation, AWS Certification Manager, RFC8555
+# https://tools.ietf.org/html/rfc8555
+
+53 Certificate Transparency for host discovery
+Censys, Certificate Transparency for Host Discovery
+Certificate Transparency, Imperva Incapsula WAF,
+
+54 Using open-source databases
+Open-Source Databases, Shodan, DNSdb, IntelX, SecurityTrails, Projct Sonar,
+Farsight security, Subdomains,
+Incident investigations,
+
+55 Passive Technique: Collect All the Data
+Passive Technique, HD Moore, Project Sonar, Certificate Transparency Logs, Censys, PremiumDrops, WhoisXMLAPI
+cloud-based domain level harvesting
+# https://github.com/hdm/inetdata
+
+57 Discovery tools and wordlists
+Discovery tools, wordlist, CNAME,
+Salesforce, Zendesk, Office, Azure,
+
+58 Domain enumerations tools
+Certificate Transparency Reports,
+wordlist, DNSRecon.py, shuffledns, gobuster,
+domain harvesting tools,
+
+59 DNSRecon.py
+DNSRecon.py, Carlos Perez, DNS Enumeration,
+DNS brute-force,
+Zone Transfer capability,
+mDNS and Local Domain Enumeration,
+Google Enumeration,
+Certificate Transparency Logs,
+Network Penetration Testing,
+Crt.sh, Google Cache, SVR record enumeration
+# https://www.github.com/darkoperator/dnsrecon
+
+60 DNSRecon.py: running dnsrecon
+DNSRecon.py usage,
+
+61 DNSRecon.py: output and large lists
+DNSRecon.py usage, CSV format, JSON format, XML format, SQLITE3DB,
+
+66 IP Addressing and hosts
+IP Address, PTR record, Source IP, Multi-Factor Authentication,
+fingerprint Coud Environment,
+
+67 Mapping to technologies
+DNS types, target's infrastructure,
+CNAME, PTR, S3 Website, Region, CSP, Static Site,
+
+68 Host discovery continued - IP Addresses
+Host discovery, Virtual Host, Host Header, Web Server,
+
+69 Cloud Service Provider mappings
+IP Address, IP Ranges, BGP AS numbers,
+
+70 Port Scanning at web scale
+masscan, Robert Graham, 5 minutes,
+SYN packets, zmap, unicornscan, scanrand,
+nmap, No default ports, 100packets per second,
+Banner Grabbing,
+# https:///github.com/robertdavidgraham/masscan
+
+71 masscan default syntax
+masscan usage, UDP,
+
+72 masscan scanning options
+masscan usage, Spoofing AC Address, Supported Protocols,
+SMB protocol,
+
+73 masscan testing theoretical limits
+masscan, local mode, PF_RING, Cisco Router,
+
+74 masscan tcp connections v.s. nmap
+masscan, TCP half open scan, catch banners, Wireless,
+
+75 masscan workflow
+masscan usage, exclude IP,
+
+76 masscan followed up by nmap
+masscan, nmap, speed over accuracy, accuracy over speed,
+NSE,
+
+77 nmap tour
+nmap usage, Fingerprinting, NSE,
+
+78 nmap nse
+nmap, NSE, Redis, Voldemort DB, Memcached, MongoDB, CouchDB,
+
+79 masscan nmap workflow
+masscan, nmap, NSE, predefined scan, XML format,
+
+84 mapping urls
+Mapping urls,
+# https://l.adaptsec.com/2YLM1Tk
+
+85 mapping azure urls(1)
+Mapping azure urls, NetSPI, endpoint services,
+Exchange, SharePoint, Azure BLOB, Azure API, Azure App Services
+# http://bit.ly/3aWkZxj
+
+86 mapping azure urls(2)
+Mapping azure urls, NetSPI,Azure Files, Azure Files Blog,
+Azure Container Registry, Microsoft Hosted Sites, Microsoft SQL Servers,
+SharePoint, Azure API, Azure Apps, Microsoft Graph, Microsoft Office365
+# https://blog.netspi.com/enumerating-azure-services/
+
+87 gobuster
+gobuster, OJ Reeves, Brute-force,Burp Intruder,
+# https://github.com/OJ/gobuster
+
+88 gobuster: syntax dns
+gobuster, DNS mode
+
+89 gobuster: syntax dir
+gobuster, Dir mode,
+
+90 gobuster 3.0: newer features
+gobuster3.0, s3 backet mode,
+
+92 gobuster: output
+gobuster,
+
+94 building good wordlists
+commonspeak2, BigQuery, BigTable, Shub Shau, Assetnote,
+# https://www.github.com/assetnote/commonspeak2
+# https://www.reddit.com/r/bigquery/wiki/datasets
+
+95 commonspeak2 queries
+commonspeak2, Ycombinator Hacker News, subdomain,
+
+96 commonspeak2 commands
+commonspeak2, Subdomains, routes, deleted files, ext wordlist,
+
+97 commonspeak2 example of subdomain query
+commonspeak2, client-side-libraries,
+
+98 wordlists.assetnote.io
+Assetnote, commonspeak2,
+# https://wordlists.assetnote.io
+# https://github.com/assetnote/wordlists
+# https://github.com/assetnote/wordlists/blob/master/.github/workflows/wordlists.yml
+
+103 visualizations during recon
+Red Team-focused team,
+
+104 visualizing the same site
+visualizing,
+
+105 eyewitness
+eyewitness, Chris Truncer of Forty North Security, Screenshot,
+Nmap XML, selenium,
+
+106 eyewitness command line syntax,
+eyewitness usage, User-Agent
+
+107 eyewitness output
+eyewitness usage,
+
+109 asset collection frameworks
+asset, Rumble.run, Assetnote, Spiderfoot,
+Reconnaissance,
+
+110 intrigue
+intrigue.io, Jonathan Cran, Ruby on Rails Application
+# https://www.gihub.com/intrigueio
+
+111 intrigue - design
+intrigue.io, Discovery, Fingerprinting, Screenshot, Code Capture,
+
+112 intrigue - collections
+intrigue.io, collections, Facebook.com, tfbnw.com, Instagram, WhatsApp,
+
+113 intrigue ident
+intrigue ident, fingerprinting library,
+
+114 running ident
+intrigue ident, Docker
+
+118 wrapping up section 1
+
+120 Appendix1: interacting with infrastructure cloud components
+existing technologies, Cloud Native Applications,
+Software Portability, Service orchestration,
+Serverless computing, Function as a Service,
+
+121 Appendix1: compute
+Infrastructure as a Service, direct ingress internet access,
+automatic scripting and boot features,
+own cloud credentials,
+
+122 Appendix1: networking components
+Networking components, offer a built-in VPN service,
+Virtual Private Network,
+
+123 Appendix1: Understanding filesystems in the cloud
+Filesystems, RPC-based protocol, SMB, NFS,
+
+124 Appendix1: service orchestration - kubernates
+Kubernetes, k8s, kubernates RBAC system,
+Microservices,
+
+125 Appendix1: Understanding containers - runc
+runc, container runtime
+
+126 Appendix1: understanding containers - containerd
+containerd, CRI-O compliant, gRPC, namespace,
+not security isolation environments,
+security isolation environments,
+Protocol Buffers,
+
+127 Appendix1: nderstanding containers - docker
+Docker, orchestration of containers,
+docker-compose, OCI format,
+security isolation environments,
+Protocol Buffers,
+
+128 Appendix1: Understanding containeres - docker hub
+dockerhub, central repository,
+dirty containers, supply chain attacks,
+
+129 Appendix1: Serverless intro
+Serverless computing, Function as a Service,
+
+130 the attacker's view of public IaaS visualized
+Scope

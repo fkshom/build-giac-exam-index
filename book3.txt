@@ -1,0 +1,180 @@
+6 mimikatz
+mimikatz, Benjamin Delpi, Gentilkiwi, LSASS,
+Cleartext paasswords, LANMAN Hashes, NTLM Hashes,
+CredentialGuard
+
+7 mimikatz shell
+mimikatz, mimikatz shell, SAM database, cryptographic certificates,
+
+8 mimikatz modules
+mimikatz, sekurlsa, DPAPI, lsadump, SAM database,
+
+9 pass the prt attacks
+mimikatz, Primary Refresh Token(PRT), DataProtection API, CloudAP,
+sekurlsa::cloudap, Proof of Session Key Value,
+x-ms-RefreshTokenCredential
+
+11 microsoft graph introduction
+Microsoft Graph,
+
+12 microsoft graph constraints
+Microsoft Graph, All, Shared, AppFolder, NoConstraints,
+# https://docs.microsoft.com/en-us/graph/permissions-reference
+
+13 microsoft graph permission example
+Calenders.Read, Directory.ReadWrite.All
+Mail.Read, DeviceManagementConfiguration.Read.All
+# https://docs.microsoft.com/en-us/graph/permissions-reference
+
+14 postman and microsoft graph
+postman, Microsoft Graph API Postman Collection, SharePoint,
+# https://docs.microsoft.com/en-us/graph/use-postman
+
+15 using the graph api for search
+Microsoft Graph API, search,
+
+20 IAM and Privilege Escalation Issues
+AWS IAM, CyberArk, Shadow Admins, Instance Profile,
+
+21 Classic Privilege Escalations
+Privilege escalations, SUID, Jailbreak,
+
+22 IAM and User Versioning
+IAM, User Versioning, IAM policies,
+
+23 IAM and User Versioning (1)
+IAM, User Versioning, IAM policies, SetDefaultPolicy,
+
+24 IAM and User Versioning (2)
+IAM, User Versioning, IAM policies, SetDefaultPolicy,
+
+25 IAM:PassRole
+IAM, PassRole,
+# https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html
+
+26 AWS Instance Metadata Service
+AWS, metadata, security-credentials,
+# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#instance-metadata-security-credentials
+
+27 AWS Session Tokens
+AWS, Session Tokens,
+
+28 AWS Metadata Session Tokens v2
+AWS, metadata, session tokens v2, IMD,
+
+30 Introduction to socat
+socat, multipurpose relay,
+
+31 redirections or other pivots
+redirection, pivots, moving laterally,
+
+32 socat address format
+socat,
+
+33 socat examples
+socat,
+
+35 using port proxies with built-in tools
+pivots, iptables, nftables, netsh, portproxy, apache, nginx,
+
+36 iptables as a redirection tool
+iptables, nftables,
+
+37 windows portproxy
+netsh, portproxy,
+
+41 AWS compute
+AWS, EC2, LightSail, Elastic Beanstalk, PACU exploit modules,
+
+42 EC2 properties
+EC2, NAT Gateway, Security Groups, default VPC, UserData,
+
+43 Attacker paths Utilizing EC2
+EC2, Lambda, makeshift router, Bastion,
+
+47 Compute Attack Scenarios
+EC2, ec2:CreateKeyPair, ec2:RunInstances, iam:Passrole, EIPs,
+
+48 Routing Through Compute
+Direct Conect,
+
+49 Implanting an EC2 Environment
+ec2:StopIntances, ec2:StartInstances, ec2:ModifyUserData,
+
+50 EC2 UserData
+EC2, UserData, Amazon SSM(Systems Manager),
+
+51 EC2 UserData Workflow
+SSRF, cloud-boothook,
+
+55 Amazon KMS
+Amazon KMS,
+
+56 Amazon KMS Use Cases
+Amazon KMS, HSM-like product, Key Rotation, Key Management, Key Escrow, Key Usage,
+
+57 KMS Encrypt/Decrypt Behavior
+Amazon KMS,
+
+59 Introduction to PACU
+Rhino Security, AWS Exploitation tool, Pacu,
+# https://github.com/RhinoSecurityLabs/pacu
+
+60 Pacu Interface
+Pacu,
+
+61 Pacu Module Dependency and Permission Dependency
+Pacu, iam__user_backdoor_keys, iam__user_enum
+
+62 Pacu Recon modules - Unauthenticated
+Pacu, Recon Modules, Authenticated Recon Modules,
+Unauthenticated Recon Modules,
+
+63 Pacu Enumeration Modules
+Pacu, iam__bruteforce_permissions, ec2__enum, lambda__enum, codebuild__enum,
+blue team,
+
+64 Pacu Escalate + Lateral move
+Pacu, iam__privesc_scan, cloudtrail__csv_injection,
+vpc__enum_lateral_movement,
+
+65 Pacu Exploits
+Pacu, exploits,
+
+66 Pacu Evasions
+Pacu, AWS WAF GuardDuty, guardduty__whitelist_ip,
+detection__disruption, AWS GuardDuty, AWS VPC Flow Logs, AWS CloudTrail, AWS CloudWatch,
+
+67 Pacu Advanced Usage
+Pacu, Pacu Proxy,
+
+71 Azure VMS
+Azure, Azure Virtual Machine, WinRM,
+
+72 Azure Virtual Machines: Backdoring Systems
+Azure,
+
+73 Working with Disks in Azure
+Azure, RBAC, dism, Azure Storage Manager,
+
+74 Azure Storage Explorer and DISM
+Azure, Azure Storage Explorer, dism (Deployment Image Servicing and management)
+
+78 Code Execution on Windows
+
+79 Custom Script Extension
+Azure, Custom Script Extension(CSE), local system account,
+# https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-windows
+
+80 Executing Commands Through RunCommand
+Azure, RunCommand, RunPowerShellScript, EnableRemotePS, Administrator account
+# https://docs.microsoft.com/en-us/azure/virtual-machines/windows/run-command
+
+81 Hybrid Workers
+Azure, Azure Automation, Hybrid Workers, Runbook automation,
+
+82 Hybrid Workers - Watchers
+Azure, Hybrid Workers, Watcher Tasks,
+
+83 WinRM
+Azure, WinRM,

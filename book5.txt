@@ -1,0 +1,315 @@
+5 Kubernetes
+Kubernetes, k8s, CNCF,
+
+6 Kubernetes Architecture (1)
+Kubernetes architecture,
+Kube Controller Manager, Cloud Controller Manager,
+
+7 Kubernetes Architecture (2)
+Kubernetes, Kube API Server, CoreOS, Redis,
+Etcd, Kube-Scheduler,
+
+8 Kubernetes Nodes
+kubelet, PodSpec, /var/run/secrets/kubernetes.io,
+kube-proxy, CRI-O,
+
+9 Kubernetes Architecture (3)
+# https://kubernetes.io/docs/concepts/overview/components/
+
+10 Certificate Usage in Kubernetes
+kubeadm, KUBECONFIG,
+
+11 Attacker's view of The Kubernetes
+1.8,
+
+12 Kubernetes Types of Deployments
+Deployment Options, Cloud Managed,
+
+13 Kubernetes Control Plane
+kubeadm, Kubectl, kubelet,
+
+14 Pods
+Pods, PodSpec,
+# https://kubernetes.io/docs/concepts/services-networking/service/
+
+15 Privileged Pods
+Privileged Pods, Host mounts,
+# https://gist.github.com/mosesrenegade/ac8efaafeed8e4dcc587a9d933311493
+
+16 Keeping Secrets in Kubernetes
+Environment variables,
+# https://kubernetes.io/docs/concepts/configuration/secret/
+
+17 Tesla Example
+Tesla, Kubernetes Dashboard UI,
+# https://arstechnica.com/information-technology/2018/02/tesla-cloud-resources-are-hacked-to-run-cryptocurrency-mining-malware/
+
+18 RBAC
+1.8, Kubernetes, RBAC, system:serviceaccount,
+# https://github.com/fabric8io/fabric8/issues/6840
+
+19 RBAC Example
+RBAC, RleBinding,
+# https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+
+20 RBAC Escalations
+RBAC,
+
+21 Vulnerability Hunting in Kubernetes
+Aqua Security, kube-hunter, vulnerability scanner,
+# https://github.com/aquasecurity/kube-hunter
+
+22 Automated Attack with Peirates
+Peirates, Ingradians,
+# https://www.inguardians.com/peirates/
+
+23 Peirates Options
+Peirates, menu-driven application,
+
+27 Backdooring Containers
+Container, bundled a binary, AutoSSH, ngrok,
+
+28 AutoSSH Container
+AutoSSH,
+
+29 Metasploit
+Metasploit, exploit development framework, Rapid7,
+msfconsole, SEC560, SEC660, SEC580,
+# https://github.com/rapid7/metasploit-framework
+
+30 Navigating the Metasploit Framework
+Metasploit,
+
+31 Introduction to Meterpreter
+Meterpreter, Metasploit backdoor payload,
+Trojan, RAT, Fully Encrypted,
+Post modules, Command Channels,
+
+32 Exploit Multi Handler
+Metasploit, exploit creation framework,
+Exploit/Multi/Handler,
+
+33 Staged and Stageless Payloads
+Metasploit, Metapreter Stager, be found on disk,
+
+34 Setting up Both Stageless and Staged Meterpreter
+Metasploit, OJ Reeves, the colonial,
+connect stageless payloads to a staged handler
+RWX(read-write-execute),
+# https://buffered.io/posts/staged-vs-stageless-handlers/
+
+35 Building Payloads
+msfvenom, LHOST, LPORT, RPORT, smaller than most GO-based binaries,
+
+36 Kubernetes and Meterpreter
+Slide in a backdoor, redirection service,
+Fargate,
+
+37 Backdoor Container Workflow
+backdoor container, msfvenom,
+
+38 Kubernetes and the Payload
+Deployments, StatefulSets, DaemonSet,
+
+39 Example Deployment.yaml
+Example Deployment.yaml,
+
+43 Red Tea and Exploitation
+Post Exploitation, Leveraging the Cloud, Building a Payloads,
+Abusing Cloud Functions, launch, persist,
+
+44 Why Discuss Red Team?
+Red Team, Testing the Security, Testing the Response,
+Testing the responses of the organization's teams,
+Testing the ability for those teams,
+Providing a singular, or multiple achievable goals for a test team
+
+45 Red Team and the Cloud
+without violating terms of service, Domain Fronting on AWS,
+Using Serverless Functions using FireProx
+# https://github.com/ustayready/fireprox
+
+46 Difficulty in Blocking Cloud Service Providers
+universally blocking, Gizmodo, Kashmir Hill, MDM,
+# https://gizmodo.com/i-cut-the-big-five-tech-giants-from-my-life-it-was-hel-1831304194
+
+48 Challenges with Traditional Payloads
+Traditional Payloads, Netcat, socat, Metasploit Meterpreter, Immunity Canvas MosDef, Core Impacts' Agent
+off-the-shelf Antivirus, EDR, re-exploitation, redelivery,
+
+49 Getting Payloads onto Systems
+lightweight, CoreOS, Alpine Linux, gcc-multilib
+# https://github.com/mosesrenegade/tools-repo
+
+50 Payload Renaissance
+custom C2 payloads, full Remote Access Trojan,
+only work on web-based systems,
+
+51 Traditional Payloads for Penetration Testing Frameworks
+MMeterpreter, MosDef,
+
+52 Beacon-based Payloads
+Beacon-based Payloads, callout-based system,
+job check-in interval, Cobalt Strike,
+
+53 Advanced C2 Architectures
+Modern C2 Infrastructure, batching style operation,
+Redirection Nodes, Redirection Servers,
+File and File Services providers,
+API Gateways and Other Cloud Service features,
+
+54 Web Shells
+Web shells, Heavyweight shells, Light shells,
+Shared Hosting, China Chopper,
+
+55 Heavy Shell Examples
+Heavy Web Shell, File Manipulation, Persistence,
+Command Execution,
+
+56 Lightweight Shells
+Lightweight Shell, eval,
+
+57 Light and Heavy Shells Visualized
+?
+
+58 Design Choices and Considerations for Payloads
+Enforce restrictions, Ensure all traffic is encrypted,
+Google Tink, Authentication, Transport Encryption, Good Encryption,
+Gopher, Kerckhoff's principle for Cryptography(暗号方式は、秘密鍵以外の全てが公知になったとして、なお安全であるべきである。敵はシステムを知っている),
+# https://github.com/google/tink
+
+59 Choices for Restrictions
+cryptographically authenticating all transactions,
+using authentication bearer tokens,
+
+63 Red Team Ops in the Cloud
+rotate attacks obfuscate the actual C2 environment,
+cross account functions, cross resource sharing functions,
+
+64 Leverage CSP Networking Options
+Cloud Service Provider Network, NAT, VPNs,
+
+65 Proxycannon-ng
+Proxycannon-ng, Wild West Hackin' Fest 2018,
+# https://github.com/proxycannon/proxycannon-ng
+
+66 Data Pivoting Options
+HTTPS, SSH, SMBv3,
+
+67 AWS Cross-Account Copies
+across tenant boundaries, DelegateS3Access,
+# https://aws.amazon.com/jp/premiumsupport/knowledge-center/copy-s3-objects-account/
+
+68 Attacker Account IAM Permissions
+
+69 Exfiltration Between Buckets
+AWS SDK tools, synchronize backet contents, CloudWatch logs,
+
+70 Azure Cross Account Copies
+Azure, AzCopy, Azure Cloud Shell,
+# https://docs.microsoft.com/en-us/archive/blogs/windowsazurestorage/azcopy-using-cross-account-copy-blob
+# https://charbelnemnom.com/how-to-transfer-data-from-one-azure-storage-account-to-another-account/
+
+71 Smuggling with Enterprise Tools
+enterprise file sharing tools, Microsoft OneDrive, Box.com, Google Drive, Dropbox
+
+72 Microsoft OneDrive
+Microsoft OneDrive, SharePoint
+
+74 Passwords
+Psassword, PKI Keys, PKI Tokens, human have to enter
+
+75 Multiple Attack Methods for Passwords
+bypass authentication, capture certificates, password hash,
+Man in the Middle authentications, Hijack Tokens,
+Cryptographic and authentication key material,
+Attacking the live system, SSH Prompt, HTTP Form, SMB Connection,
+Copy hashes and cracking them, Man in the Middle,
+2FA, Two Factor Authentication prompt,
+
+76 Password Lists and Wordlists
+wordlist, HaveIBeenPwned.com, 1 billion passwords, Troy Hunt,
+# https://hashes.org
+
+77 Cewland Custom Wordlists
+CeWL, Custom WordList Generator, Robin Wood (Dijininja),
+# https://github.com/digininja/CeWL
+
+79 Password Attack Types and Methodology
+Brute force password attacks, Dictionary attacks, Credential stuffing attacks,
+Password spraying attack,
+
+80 Mounting a Brute Force Attack
+brute force attack,
+
+81 Mounting a Dictionary Attack
+Dictionary attacks,
+
+82 Mounting a Password Spraying Attack
+password spraying attack, reduces the change for account lockout,
+
+83 Mounting a Credential Stuffing Attack
+Credential Stuffing Attack,
+
+84 Account Attack Methodology
+Account Attack Methodology
+
+85 Username Structures
+Username structures,
+
+86 Credential Stuffing Attack Tools
+Credential Stuffing Attack Tools,
+Hydra, Patator, Burp Suite, Custom scripts,
+
+87 THC-Hydra
+THC-Hydra, Hydra, Van Hauser, The Hacker's Choice,
+# https://github.com/vanhauser-thc/thc-hydra
+
+88 THC-Hydra Syntax and Examples
+THC-Hyrda,
+
+89 Pw-Inspector
+pw-inspector, wordlist of any type,
+
+93 Obfuscation of C2 Infrastructure
+smoke screen, DDoS, CDN,
+
+94 Finding Valid Domains with Domain Hunter
+C2, Joe Vest, Andrew Chiles, Domainhunter,
+bypass modern content filters,
+# https://github.com/threatexpress/domainhunter
+
+95 Domainhunter Syntax
+Domainhunter, IBM X-Force, Cisco Senderbases and Talos, Symantec Bluecoat,
+# https://www.expireddomains.net/
+
+96 Buying Good Web Properties - Flippa
+Flippa,
+# https://flippa.com/
+
+97 Domain Fronting
+Domain Fronting, Server Name identifier(SNI field),
+Cloudflare, Fastly, Akamai
+
+98 Domain Fronting Visualized
+Domain Fronting
+
+99 Domain Fronting Methodology
+Domain Fronting, Wappalyzer, LetsEncrypt
+# https://www.wappalyzer.com/technologies/fastly
+# https://github.com/vysecurity/DomainFrontingLists
+
+100 Metasploit and Valid Cryptography
+Certbot, LetsEncrypt, ACME protocol, expire after 90 days
+# https://certbot.eff.org/
+
+101 Using Valid Certificates in Metasploit
+Valid Certificate in Metasploit
+
+102 Pivoting with HTTP
+hop.php, C2,
+# https://github.com/rapid7/metasploit-framework/blob/master/data/php/hop.php
+# https://github.com/mosesrenegade/php-webshell
+
+103 Wrapping up Section 5
+Password, Backdooring containers, Building modern C2 arch, Leveraging redirection

@@ -1,0 +1,287 @@
+5 Introduction to Cloud Native Attacks
+Cloud Native,
+
+6 Mapping Visualized: Multiple Layers of Abstraction
+Service mesh,
+
+7 Application Mapping v.s. Infrastructure mapping
+Application mapping, Infrastructure mapping,
+
+8 HTTP Request Review - HTML
+HTTP Request, HTML
+
+9 HTTP Request Review - JSON
+HTTP Request, JSON,
+
+10 Client-side mappings
+Client-side mapping,
+
+12 Cloud Native Applications
+Cloud Native Applications, CNCF(Cloud Native Computer Foundation),
+
+13 Cloud Native Application Architectures
+Cloud Native Applications, Microservices, Kubernetes,
+
+14 CNCF Trail Map
+Trail map,
+# https://github.com/cncf/trailmap
+
+15 How Applications Talk - Classic
+HTTP, RPC, SMB, Database Protocols, SOA Bus,
+
+16 How CLoud Applications Talk - Cloud Native
+RESTful API, gRPC, Redis, Memcached,
+
+18 Development Pipeline and Attacks
+CSV(Concurrent Version System), SVN(Subversion), Git,
+SCM(Source Code Management Tools),
+Microsoft Visual Source Safe, Mercurial,
+
+19 Git
+Git, Linux Torvalds,
+# https://www.git-scm.com
+
+20 Deployment Pipelines
+Deployment Pipelines, rapid deployment steps,
+DevOps community,
+Continuous Integration(CI),
+Continuous Deployment(CD),
+
+21 Build Systems
+Build systems, Jenkins, Travis CI, Atlassian Bamboo,
+Azure Pipelines, AWS CodeBuild,
+
+22 Detecting CI/CD Tools
+JENKINSFILE, .travis.yml, .circleci/config.yml,
+drone/.drone.yml
+
+23 Attacking CI/CD
+Container,
+
+24 Travis Example
+Travis CI, pluggable module,
+
+25 Travis Configuration Files
+Travis CI,
+
+26 Using Travis to Move Laterally
+Travis CI, Shared
+
+27 Tips on Output
+behind a NAT,
+
+28 Several Use Cases
+ngrok, netcat, Meterpreter, Domain Fronting,
+
+29 Example Scripts
+Netcat,
+
+33 Web Application Injections
+application architecture, frontend proxy, backend resources,
+
+34 Injections
+SEC542, SEC642, web application penetration testing class,
+Server-Side Request Forgeries(SSRFs),
+SQL Injection, storage injection attack,
+Proxy attacks,
+
+36 Server-Side Request Forgeries
+Server-Side Request Forgeries(SSRFs),
+Lambda, S3, other http URLs,
+take control of redirection of internal URLs,
+Remote File Inclusion,
+
+37 Why Are SSRFs Popular Again?
+SSRF,
+
+38 SSRF Discovery
+SSRF, contain references to another URL
+
+39 SSRF Implications
+SSRF, Meta Data service, Instance Metadata Version 2
+
+40 MetaData v2 Token Protections
+Instance Metadata Version 2, prevent simple SSRFs,
+PUT request to obtain a TOKEN,
+TTL, followed by GET request,
+X-aws-ec2-metadata-token
+
+41 SSRFs in the Wild
+SSRF, CapitalOne,
+# https://hackerone.com/reports/514224  SSRF in search.gov
+# https://hackerone.com/reports/386292  SSRF in slack
+# https://hackerone.com/reports/341876  SSRF in Shopify w/ Google Instance Metadata API v1 examples included
+# https://www.wyden.senate.gov/404?notfound=imo/media/doc/081319%20amazon%20letter%20to%20sen%20wyden
+# https://www.wyden.senate.gov/imo/media/doc/081319%20Amazon%20Letter%20to%20Sen%20Wyden%20RE%20Consumer%20Data.pdf
+
+45 Command Line Execution in a Web Application
+Web Applications, systems languages,
+cgi-bin, mod-php, mod-python, .NET ASAPI Interfaces, HTTP Proxy Redirect(php-fpm wsgi)
+files are executed,
+
+46 Command Line Execution Example
+system ping, LigHTTPD, lightweight HTTP daemon,
+
+47 Exploiting Command Injections
+Command injection, No-blind, Blind,
+
+48 Command Injection Primitives
+Command injection
+
+49 Command Injections and Cloud Native
+Command injection, SEC542, SEC560, SEC642,
+
+50 Finding COmmand Injections
+Alpine Linux, Windows Server Core,
+
+54 Serverless Function Attacks with Lambda
+Serverless, Function as a Service,
+Managed Containers, Kubernetes,
+Amazon Lambda, Azure Functions, GCP Functions,
+event driven,
+
+55 AWS Lambda
+Amazon Lambda, API Gateway, HTTP Gateway,
+
+56 AWS Lambda Constraints
+Amazon Lambda,
+
+57 NodeJS Lambda Example - JavaScript
+Amazon Lambda, NodeJS
+# https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html
+
+58 Executing Lambda Functions Manually (1)
+Amazon Lambda,
+
+59 Exploits in Lambda Software
+Amazon Lambda, Code Execution
+
+60 AWS Lambda Shells
+Amazon Lambda, spin down after 15 minutes,
+
+62 Azure Serverless
+Azure Functions, supports .NET,
+
+63 Attacker's view of Windows Functions
+Azure Functions, Kudu,
+# https://github.com/projectkudu/kudu
+
+64 Attacking Serverless Functions
+Azure Functions, application as other functions,
+
+68 Exposed Databases
+Digital Ocean, Linode, public IP address by default,
+
+69 Discovering Exposed Services
+MongoDB, Redis, ElasticSearch, Shodan, SASL authentication,
+
+70 Databases in the Cloud
+rapid prototyping databases, NoSQL, MongoDB, Cassandra,
+Key/Value In-Memory Session store, Memcached, Redis
+Scale-Out architectures,
+
+71 Paid Extras - RedisLabs
+RedisLabs, session store,
+
+72 A Word on SQL Injection v.s. NoSQL Injection
+SQL Injection, SEC542, SEC642, Pentest Monkey, OWASP Testing Guide,
+# https://pentestmonkey.net/cheat-sheet/sql-injection/mysql-sql-injection-cheat-sheet
+# https://owasp.org/www-community/attacks/SQL_Injection
+
+73 Connecting to Cloud Databases
+MongoDB, Port 27001, Redis, Port 6379
+JSON-like language, BSON, Binary JSON, datastore,
+
+74 Exposed Databases: Why Dows This Matter? Phase 1
+MongoDB, Redis,
+
+75 Exposed Databases: Why Does This Matter? Phase 2
+MongoDB, Redis,
+
+76 Impact of Exposing These Injections
+
+77 SQL v.s. MongoDB: A Primer
+MongoDB, Structured Query Language (SQL),
+
+79 MongoDB Command Cheat Sheet
+MongoDB, Document Object-Storage environment,
+
+83 SQL Injection in a Hosted Environment
+SQL Injection,
+
+84 Amazon RDS and AURORA
+Amazon RDS, Aurora,
+
+85 RDS Design
+
+86 SQL Injection
+SQL Injection, SEC541, prepared statement, Object Relational Mapping(ORM),
+Ruby on Rails, Laravel, Django, .NET MVC, SAP .NET, Spring, Struts,
+ActiveRecord, Hibernate, nHibernate, SQLAlchemy,
+Express, Flask,
+# http://phrack.org/issues/54/8.html#article
+
+87 SQL Injection Workflow
+SQL Injection Workflow,
+
+88 SQL Injection Visualized in NodeJS (1)
+SQL Injection, SQL statement query, NodeJS, ExpressJS,
+
+89 SQL Injection Visualized in NodeJS (2)
+specific special characters, String concatenation, math operations,
+
+90 SQL Injection Visualized in NodeJS (3)
+NULL, Empty value,
+
+91 SQLmap
+UNION statements, LIMIT statement, SEC542, SEC560,
+
+92 SQLmap.py
+SQLmap.py, Bernardo Damele A.G., automated Injection tool,
+# https://sqlmap.org/
+
+93 SQLmap and Cloud Applications
+SQLmap, JSON Array,
+
+94 SQLmap Examples
+
+95 SQL Injection Defenses
+ORM, Sequelize, NodeJS ORM, prepared statement
+# https://sequelize.org/v3/
+
+99 Containers and Microservices
+Application deployment strategies,
+
+100 Containers and Application Deployment
+Container, Application deployment,
+cgroups, network bridges, chroot filesystem,
+Siloed processes, Hyper-V based virtual machines,
+simple prepackaged, immutable, Namespaces,
+silo process,
+
+101 Container Architectures Visualized - Linux
+Container, chroot, Control Groups,
+
+102 Container Architectures Visualized - Windows Server
+HyperV, Windows Server Core, Nano WIM file, NTDLL.DLL,
+
+103 Containers Simplify App Deployments
+Alpine Linux,
+
+104 Dockerfile
+Docker,
+
+105 Container Cross Communication
+Memory Sharing, Internal Networks, IPC, SH,
+
+106 Microservices and Cloud Native Applications
+Container to Container problem, Service mesh,
+Upgrades, Service chaining, Routing and Switching, Lifecycle Management,
+
+107 Appendix 4: AWS lambda Example - python
+
+108 Appendix 4: AWS Lambda Functions
+event driven,
+
+109 Appendix 4: Windows Containers and Mimikatz
+mimikatz,
