@@ -1,17 +1,46 @@
+# frozen_string_literal: true
+
+require 'csv'
 require 'pp'
+require 'yaml'
+
+class PageBlock
+  class << self
+    def parse_pageblock_lines(pageblock_lines)
+      head_line = pageblock_lines.shift
+      page, title = head_line.strip.split(' ', 2)
+      keywords = pageblock_lines.inject([]) do |memo, line|
+        next memo if line =~ /\A#/
+
+        memo + line.strip.split(',').map(&:strip).reject(&:empty?)
+      end
+      PageBlock.new(page, title, keywords)
+    end
+  end
+
+  attr_reader :page, :title, :keywords
+  attr_accessor :bookname
+
+  def initialize(page, title, keywords)
+    @page = page
+    @title = title
+    @keywords = keywords
+    @bookname = ''
+  end
+end
 
 class Indexfile
   def initialize
-    @booknum_with_filename = []
+    @files = []
     @entries = nil
   end
 
-  def <<(booknum_with_filename)
-    @booknum_with_filename << booknum_with_filename
+  def add(bookname:, filename:)
+    @files << [bookname, filename]
   end
 
   def entries
-    @entries ||= load
+    @entries ||= load_files
     @entries
   end
 
@@ -21,29 +50,16 @@ class Indexfile
 
   private
 
-  def parse_chunk(lines)
-    line = lines.shift
-    page, title = line.strip.split(' ', 2)
-    keywords = lines.inject([]) do |memo, line|
-      next memo if line =~ /\A#/
-
-      memo + line.strip.split(',').map(&:strip).reject(&:empty?)
-    end
-    {
-      page: page,
-      title: title,
-      keywords: keywords
-    }
-  end
-
-  def load
+  def load_files
     entries = []
-    @booknum_with_filename.each do |book_no, filename|
-      File.foreach(filename).chunk do |line|
+    @files.each do |bookname, filename|
+      pageblocks = File.foreach(filename).chunk do |line|
         /\A\s*\z/ !~ line || nil
-      end.each do |_, lines|
-        entry = parse_chunk(lines)
-        entry[:book] = book_no
+      end
+
+      pageblocks.each do |_, pageblock_lines|
+        entry = PageBlock.parse_pageblock_lines(pageblock_lines)
+        entry.bookname = bookname
         entries << entry
       end
     end
@@ -51,28 +67,28 @@ class Indexfile
   end
 end
 
+config = YAML.load_file('config.yml')
+
 indexfile = Indexfile.new
-indexfile << [1, 'book1.txt']
-indexfile << [2, 'book2.txt']
-indexfile << [3, 'book3.txt']
-indexfile << [4, 'book4.txt']
-indexfile << [5, 'book5.txt']
-entries = {}
+config['files'].each do |file|
+  indexfile.add(bookname: file['bookname'], filename: file['filename'])
+end
+
+keyword_dict = {}
 indexfile.each do |entry|
-  entry[:keywords].each do |keyword|
-    entries[keyword] ||= []
-    entries[keyword] << { book: entry[:book], page: entry[:page], title: entry[:title] }
+  entry.keywords.each do |keyword|
+    keyword_dict[keyword] ||= []
+    keyword_dict[keyword] << { bookname: entry.bookname, page: entry.page, title: entry.title }
   end
 end
 
-require 'csv'
-
-CSV.open("a.txt", "wb") do |csv|
-
-entries.keys.sort_by(&:downcase).each do |keyword|
-  bookpages = entries[keyword].map do |entry|
-    "#{entry[:book]}-#{entry[:page]} #{entry[:title]}"
+result = CSV.generate do |csv|
+  keyword_dict.keys.sort_by(&:downcase).each do |keyword|
+    bookpages = keyword_dict[keyword].map do |entry|
+      "#{entry[:bookname]}-#{entry[:page]} #{entry[:title]}"
+    end
+    csv << [keyword, bookpages.join("\n")]
   end
-  csv << [keyword, bookpages.join("\n")]
 end
-end
+
+puts result

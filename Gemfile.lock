@@ -1,12 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    yaml (0.2.0)
 
 PLATFORMS
   ruby
   x86_64-linux
 
 DEPENDENCIES
+  yaml
 
 BUNDLED WITH
    2.2.0

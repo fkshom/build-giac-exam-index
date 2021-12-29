@@ -1,0 +1,11 @@
+files:
+  - bookname: 1
+    filename: book1.txt
+  - bookname: 2
+    filename: book2.txt
+  - bookname: 3
+    filename: book3.txt
+  - bookname: 4
+    filename: book4.txt
+  - bookname: 5
+    filename: book5.txt
